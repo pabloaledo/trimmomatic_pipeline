@@ -1,5 +1,6 @@
 process TRIMMOMATIC {
     container 'staphb/trimmomatic:0.39'
+    containerOptions "-e FUSION_LOG_LEVEL=trace"
 
     script:
     """
