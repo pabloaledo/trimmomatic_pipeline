@@ -8,7 +8,7 @@ process TRIMMOMATIC {
     trimmomatic PE \
                 -threads 5 \
                 -phred33 \
-                -trimlog trimlog.log \
+                -trimlog /dev/null \
                 /fusion/s3/ngi-igenomes/test-data/rnaseq/SRX1603629_T1_2.fastq.gz \
                 /fusion/s3/ngi-igenomes/test-data/rnaseq/SRX1603630_T1_2.fastq.gz \
                 07id_S7_R1.trim.fastq.gz \
