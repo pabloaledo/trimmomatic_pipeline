@@ -4,7 +4,7 @@ process TRIMMOMATIC {
 
     input:
         path 'SRX1603629_T1_2.fastq.gz'
-        path 'SRX1603639_T1_2.fastq.gz'
+        path 'SRX1603630_T1_2.fastq.gz'
 
     output:
         path 'output1'
