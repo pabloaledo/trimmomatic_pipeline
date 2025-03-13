@@ -3,8 +3,8 @@ process TRIMMOMATIC {
     containerOptions "-e FUSION_LOG_LEVEL=trace"
 
     input:
-        path 'input1'
-        path 'input2'
+        path 'SRX1603629_T1_2.fastq.gz'
+        path 'SRX1603639_T1_2.fastq.gz'
 
     output:
         path 'output1'
@@ -20,8 +20,8 @@ process TRIMMOMATIC {
                 -threads 5 \
                 -phred33 \
                 -trimlog /dev/null \
-                input1 \
-                input2 \
+                SRX1603629_T1_2.fastq.gz \
+                SRX1603630_T1_2.fastq.gz \
                 output1 \
                 output2 \
                 output3 \
