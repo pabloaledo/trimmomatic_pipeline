@@ -1,5 +1,6 @@
 process TRIMMOMATIC {
     container 'staphb/trimmomatic:0.39'
+    memory '32GB'
 
     input:
         path 'SRX1603629_T1_2.fastq.gz'
