@@ -4,7 +4,7 @@ process WRITETEST {
 
     script:
     """
-    for a in {1..1000}; do echo \$a >> file ; sleep 1; done
+    for a in {1..1000}; do echo \$a >> file; done
     md5sum file | grep 53d025127ae99ab79e8502aae2d9bea6
     """
 }
